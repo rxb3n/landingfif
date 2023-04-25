@@ -1,0 +1,373 @@
+@font-face {
+    font-family: "satoshi";
+    src: url(@/fonts/satoshi/satoshi_regular.otf);
+  }
+  
+  @font-face {
+    font-family: "neutro";
+    src: url(@/fonts/neutro/Neutro-Bold.otf);
+  }
+  
+  body {
+    background-color: #121213;
+    margin: 0px;
+  }
+  
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  .nav-container {
+    z-index: 2;
+    font-family: satoshi;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: sticky;
+    background-color: #171719;
+    color: white;;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+  
+  .fif-nav {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    padding-right: 75px;
+  }
+  
+  .fif_logo {
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+  
+  .nav-items {
+    margin-top: 15px;
+    color: #626368;
+    width: 750px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .social-links {
+    margin-top: 25px;
+    width:350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .header-container {
+    font-family: neutro;
+    color: white;
+  
+  }
+  
+  .header-container::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: 1;
+    background-image: url("@/assets/background-header.svg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+  }
+  
+  .alaune {
+    font-family: satoshi;
+    margin-top: 150px;
+    padding-right: 1700px;
+  }
+  
+  .carousel-main {
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin-left: 15%;
+    margin-top: 50px;
+    width: 1160px;
+    border: 20px;
+  }
+  
+  #green-text {
+    color: #8EF6D3;
+  }
+  
+  #dark-grey {
+    color:#626368;
+  }
+  
+  .section-text{
+    font-family: satoshi;
+    color: #626368;
+    padding-right: 1700px;
+  }
+  
+  #carousel-item {
+    background-color: #1F1F23;
+    width: fit-content;
+    font-family: satoshi;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    border-radius: 40px;
+    padding-right: 15px;
+  }
+  
+  #carousel-pic {
+    border-radius: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    padding-right: 15px;
+  }
+  
+  #article-content {
+    color: #AFAFB6;
+  }
+  
+  .advert {
+    width: 728px;
+    height: 90px;
+    margin-top: 240 px;
+  }
+  
+  .filters {
+    width: 1600px;
+    font-family: satoshi;
+    background-color: #1F1F23;
+    display: flex;
+    margin-left: 5%;
+    border-radius: 16px;
+    justify-content: space-around;
+    padding-top: 15px;
+  }
+  
+  .divider {
+    border: 1.5px solid #313139;
+  }
+  
+   #filter-btn {
+    font-family: satoshi;
+    font-size: 16px;
+    color: white;
+    background-color: #1F1F23;
+    border: 2px solid;
+    border-radius: 40px;
+    border-color: #2b2b31;
+    width: 180px;
+    height: 48px;
+   }
+  
+   #filter-btn:hover {
+    border-color: white;
+   }
+  
+   .datas {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    justify-content: center;
+    flex-direction: row;
+    font-family: satoshi;
+    color: white;
+    max-width: 1400px;
+   }
+  
+   .read-btn {
+    display: flex;
+    flex-direction: row;
+   }
+  
+   .slider-pages {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 40px;
+   }
+  
+   .dots-wrapper {
+    margin-top: 20px;
+    margin-right: 70px;
+    margin-left: 70px;
+    display: flex;
+    width: 46px;
+    justify-content: space-evenly;
+    flex-direction: row;
+   }
+  
+   .dots {
+    background-color: white;
+    border: 1.5px solid #1F1F23;
+    border-radius: 40px;
+    height: 6px;
+    width: 6px;
+   }
+  
+   .article-wrap {
+    height: 400px;
+    width: 300px;
+    border-radius: 40px;
+    border: 1px solid #1F1F23;
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    background-color: #1F1F23;
+    margin: 25px;
+   }
+  
+   .art-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #626368;
+    font-size: 12px;
+   }
+  
+   .art-category {
+    font-size: 16px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+    color: #76f4b0;
+   }
+  
+   .art-title {
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+   }
+  
+   .duration-wrap {
+    display: flex;
+    justify-content: end;
+   }
+  
+   .art-img {
+    margin-left: 1.2em;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 250px;
+   }
+  
+   .footer-wrap {
+    display: flex;
+    font-family: satoshi;
+    background-color: #171719;
+    justify-content: space-evenly;
+   }
+  
+   .fif-footer {
+    display: flex;
+    flex-direction: row;
+    font-size: 22px;
+   }
+  
+   .footer-left {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+   }
+  
+   .footer-right {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+   }
+  
+   .footer_columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+   }
+  
+  
+   .faq-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+   }
+  
+  
+   #footer-sections {
+    color: #c9cacf;
+   }
+  
+   #bold-footer {
+    color: white;
+   }
+  
+   .footer-last {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    padding-bottom: 15px;
+    margin-top: 80px;
+   }
+  
+   .contact-btn {
+    font-size: 16px;
+    margin-left: 20px;
+    padding: 4px 8px;
+    background-color: #171719;
+    color: white;
+    border: 3px solid white;
+    border-radius: 40px;
+    transition: .2s;
+   }
+  
+   .contact-btn:hover {
+    background-color: white;
+    color: black;
+   }
+  
+   .page-btn {
+    background-color: #1F1F23;
+    border: 1px #1F1F23;
+    border-radius: 40px;
+    transition: 0.2s;
+   }
+  
+   .page-btn:hover {
+    filter: invert();
+   }
+  
+   .read-btn {
+    width: 100px;
+    background-color: #1F1F23;
+    border: 1px solid white;
+    border-radius: 40px;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+   }
+  
+   .read-btn:hover {
+    filter: invert();
+   }
+  
+   .scrolly-ad {
+    margin-left: 1680px;
+    position: sticky;
+    top: 0;
+   }
+  
+   .article-list {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+   }
