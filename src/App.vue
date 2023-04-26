@@ -212,14 +212,15 @@ import "swiper/css"
 
   <div id="pagination-wrapper">
 
-    <ul id="pages-container">
-      <button class="pages" id="page-number-previous"> &lt; </button>
-      <button class="pages" id="page-number-1">1</button>
-      <button class="pages" id="page-number-2">2</button>
-      <button class="pages" id="page-number-3">3</button>
-      <button class="pages" id="page-number-4">4</button>
-      <button class="pages" id="page-number-next">></button>
-    </ul>
+    <paginate
+      :page-count="20"
+      :click-handler="functionName"
+      :prev-text="'<'"
+      :next-text="'>'"
+      :container-class="'className'"
+      :page-class="'page-item'"
+    >
+    </paginate>
 
   </div>
 
@@ -313,15 +314,12 @@ import "swiper/css"
 
 <script>
 import allArticles from '@/packages/MOCK_DATA.json'
+import Paginate from "vuejs-paginate-next";
 
 export default {
   data () {
     return {titles: allArticles}
   },
-
-  gotoPage() {
-
-  }
 }
 
 </script>
