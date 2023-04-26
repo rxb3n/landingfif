@@ -1,9 +1,8 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue"
 import "swiper/css"
-
-
 </script>
+
 
 
 <template>
@@ -178,8 +177,8 @@ import "swiper/css"
 
           <div class="article-wrap">
 
-            <img src='@/assets/ic_flag.jpg' height="120" width="260" class="art-img">
-            <h3 class="art-category">{{ title.Category }}</h3>
+            <img src='https://picsum.photos/200' height="120" width="260" class="art-img">
+            <h3 class="art-category" style="margin-bottom: 1px;">{{ title.Category }}</h3>
             <h3 class="art-title"> {{ title.Title }}</h3>
 
 
@@ -211,7 +210,6 @@ import "swiper/css"
       <!--------- PAGINATION ----------->
 
   <div id="pagination-wrapper">
-
     <paginate
       :page-count="20"
       :click-handler="functionName"
@@ -221,7 +219,6 @@ import "swiper/css"
       :page-class="'page-item'"
     >
     </paginate>
-
   </div>
 
         <!--------- FOOTER ----------->
@@ -318,10 +315,11 @@ import Paginate from "vuejs-paginate-next";
 
 export default {
   data () {
-    return {titles: allArticles}
+    return {titles: allArticles,}
   },
-}
 
+
+}
 </script>
 
       <!--------- STYLE IMPORT ----------->
