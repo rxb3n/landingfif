@@ -39,6 +39,7 @@
   }
 
   .page-item {
+    outline: none;
     display: flex;
     margin-left: 50px;
     padding: 5px;
@@ -49,6 +50,18 @@
   .page-item:hover {
     border-radius: 40px;
     background-color: #626368;
+  }
+
+  .page-item:active {
+    border-radius: 40px;
+    background-color: #AFAFB6; 
+  }
+
+  .page-item :focus {
+    border-radius: 40px;
+    background-color: #626368; 
+    padding: 5px;
+    
   }
 
   ul {
@@ -124,6 +137,11 @@
     margin-top: 150px;
     padding-right: 1700px;
   }
+
+  .container-class:focus {
+    background-color: #626368;
+
+  }
   
   .carousel-main {
     color: white;
@@ -175,7 +193,7 @@
   }
   
   .advert {
-    width: 728px;
+    width: 250px;
     height: 90px;
     margin-top: 240 px;
   }
@@ -292,6 +310,7 @@
     display: flex;
     justify-content: end;
    }
+
   
    .art-img {
     margin-left: 1.2em;
@@ -383,6 +402,9 @@
    .page-btn:hover {
     filter: invert();
    }
+   .page-btn:active {
+    filter: invert();
+   }
   
    .read-btn {
     width: 100px;
@@ -409,7 +431,7 @@
   
    .article-list {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 150px;
+    margin-left: 300px;
    }
