@@ -1,6 +1,6 @@
 <script setup>
-import { Swiper, SwiperSlide } from "swiper/vue"
-import "swiper/css"
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
 </script>
 
 
@@ -13,13 +13,23 @@ import "swiper/css"
       <img class= "fif_logo" src= "@/assets/fif-logo.png" height="40" width="40">
       <h2> F.I.F</h2>
     </div>
-    
-    <div class="nav-items">
+
+    <img class="menu-icon" v-show="mobile" src="@/assets/hamburger-menu.png" height="40" @click = "toggleMenu">
+
+    <div class="nav-items" v-show="!mobile" id="menuList">
       <h3 style="color: white;">Actualités</h3>
       <h3>Les Élephants</h3>
       <h3>Competitions</h3>
       <h3>La F.I.F</h3>
     </div>
+
+    <transitions class="nav-items" v-show="mobileNav" id="menuList">
+      <h3 style="color: white;">Actualités</h3>
+      <h3>Les Élephants</h3>
+      <h3>Competitions</h3>
+      <h3>La F.I.F</h3>
+    </transitions>
+
     <div class="social-links">
       <img src="@/assets/fb-logo.png" height="40" width="40">
       <img src="@/assets/yt-logo.png" height="40" width="60">
@@ -40,7 +50,7 @@ import "swiper/css"
       <SwiperSlide v-for="n in 1" :key="n">
         <div class="carousel-first" id="carousel-item">
           <img id="carousel-pic" src="@/assets/equipe1.jpg" width="460" height="340">
-          
+  
           <div id="article-lorem">
             <h3 id="green-text">Catégorie</h3>
             <h2 id="article-title">Lorem ipsum dolor sit amet.</h2>
@@ -52,9 +62,11 @@ import "swiper/css"
           </div>
         </div>
       </SwiperSlide>
+
       <SwiperSlide v-for="n in 1" :key="n">
         <div class="carousel-second" id="carousel-item">
           <img id="carousel-pic" src="@/assets/equipe2.jpg" width="460" height="340">
+
           <div id="article-lorem">
             <h3 id="green-text">Catégorie</h3>
             <h2 id="article-title">Lorem ipsum dolor sit amet.</h2>
@@ -66,22 +78,27 @@ import "swiper/css"
           </div>
         </div>
       </SwiperSlide>
+
       <SwiperSlide v-for="n in 1" :key="n">
         <div class="carousel-third" id="carousel-item">
           <img id="carousel-pic" src="@/assets/equipe3.jpg" width="460" height="340">
+
           <div class="article-lorem">
             <h3 id="green-text">Catégorie</h3>
             <h2 id="article-title">Lorem ipsum dolor sit amet.</h2>
             <h3 id="article-content">Bacon ipsum dolor amet non venison filet mignon landjaeger, prosciutto enim reprehenderit tenderloin aliquip culpa. Landjaeger dolore proident ham consequat buffalo. Eu ex do, ullamco id exercitation irure kevin strip steak. Cow id salami ad ea, qui ut jowl ex strip steak. Mollit chuck irure ex ipsum eu consectetur sed sint prosciutto fatback pork loin.</h3>
             <div class="read-btn" style="margin-left: 40%; margin-top: 50px;">
-              <button class="read-btn">
+
+              <div class="read-btn">
                 <img src="@/assets/arrow-right.png" width="24" height="24" style="margin-top: 20px;">
                 <h3>Lire</h3>
-              </button>
+              </div>
+
             </div>
           </div>
         </div>
       </SwiperSlide>
+
     </Swiper>
   </div>
         <!--------- CAROUSEL ARROW BTNS ----------->
@@ -102,9 +119,11 @@ import "swiper/css"
       </button>
     </div>
   </div>
+
   <div>
     <img class="advert" src="@/assets/mcdonalds-angus-burger.webp" width="300" height="10">
   </div>
+  
       <!--------- ARTICLES ----------->
   <h3 class="section-text">Les Articles</h3>
   <div class="filters">
@@ -121,7 +140,7 @@ import "swiper/css"
   </div>
   <div class="datas">
     <div class="scrolly-ad" style="display: flex; position:sticky; right: 200px;">
-      <img src="@/assets/scrolly-ad.jpeg" style="padding-top: 50px;">
+      <img src="@/assets/scrolly-ad.jpeg" style="padding-top: 50px;" id="scrolling-ad">
     </div>
     <div class="article-list">
 
@@ -148,8 +167,16 @@ import "swiper/css"
   </div>
       <!--------- PAGINATION ----------->
   <div id="pagination-wrapper">
-    <paginate tabindex="0" v-model="page" :v-bind="title"  :page-count="pageLimit" :click-handler="clickCallback" :prev-text="'<'" :next-text="'>'" :container-class="'className'" :page-class="'page-item'">
-
+    <paginate 
+    tabindex="0" 
+    v-model="page" 
+    :v-bind="title"  
+    :page-count="pageLimit" 
+    :click-handler="clickCallback" 
+    :prev-text="'<'" 
+    :next-text="'>'" 
+    :container-class="'className'" 
+    :page-class="'page-item'">
     </paginate>
   </div>
         <!--------- FOOTER ----------->
@@ -215,7 +242,9 @@ import "swiper/css"
     </div>
   </div>
 </template>
+
       <!--------- SCRIPTS ----------->
+
 <script>
 import allArticles from '@/packages/MOCK_DATA.json'
 import Paginate from "vuejs-paginate-next";
@@ -225,6 +254,9 @@ export default {
   
   data() {
     return {
+      mobileNav:null,
+      windowWidth:null,
+      mobile:null,
       page:1,
       titles: allArticles,
       pageSize: 12,
@@ -233,8 +265,14 @@ export default {
   },
 
   beforeMount() {
+    this.mobileNav = true;
    this.titles = this.titles.slice(this.page * this.pageSize, (this.page *this.pageSize) + this.pageSize);
    this.pageLimit = Math.floor(allArticles.length / this.pageSize)
+},
+
+created() {
+  window.addEventListener("resize", this.checkScreenSize);
+  this.checkScreenSize();
 },
 
   methods: {
@@ -245,7 +283,26 @@ export default {
       this.titles = this.titles.slice(this.page * this.pageSize, (this.page *this.pageSize) + this.pageSize);
       console.log(pageNum);
     },
+    
+    toggleMenu() {
+      this.mobileNav = !this.mobileNav;
+    },
+
+    checkScreenSize() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth <= 950) {
+        this.mobile = true;
+        return;
+      }
+      this.mobile = false;
+      this.mobileNav = false;
+      return;
+    }
+
   }
+
+  
+  
 }
 </script>
 
