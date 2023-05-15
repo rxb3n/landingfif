@@ -144,23 +144,26 @@ import "swiper/css";
     </div>
     <div class="article-list">
 
-        <div v-for="title in titles" :key="title.id">
+      <div class="article-list">
 
-          <div class="all-arts" >
-            <div class="article-wrap">
-              <img src='https://picsum.photos/200' height="120" width="260" class="art-img">
-              <h3 class="art-category" style="margin-bottom: 1px;">{{ title.Category }}</h3>
-              <h3 class="art-title"> {{ title.Title }}</h3>
-              <div class="art-bottom">
-                <h3 class="art-date"> {{ title.Date }}</h3>
-                <div class="duration-wrap">
-                  <img src="@/assets/clock.png" width="12" height="12" style="margin-top: 15px;">
-                  <h3 class="art-duration"> {{ title.Duration }}min</h3>
-                </div>  
-              </div>
-            </div>
-          </div>
-        </div>
+<div v-for="title in titles" :key="title.id">
+
+  <div class="all-arts" >
+    <div class="article-wrap">
+      <img src='https://picsum.photos/200' height="120" width="260" class="art-img">
+      <h3 class="art-category" style="margin-bottom: 1px;">{{ title.category }}</h3>
+      <h3 class="art-title"> {{ title }}</h3>
+      <div class="art-bottom">
+        <h3 class="art-date"> {{ title.date }}</h3>
+        <div class="duration-wrap">
+          <img src="@/assets/clock.png" width="12" height="12" style="margin-top: 15px;">
+          <h3 class="art-duration"> {{ title.duration }}min</h3>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+</div>
     </div>
     
     
@@ -246,8 +249,6 @@ import "swiper/css";
       <!--------- SCRIPTS ----------->
 
 <script>
-import allArticles from '@/packages/MOCK_DATA.json'
-import Paginate from "vuejs-paginate-next";
 
 export default {
 
@@ -258,31 +259,46 @@ export default {
       windowWidth:null,
       mobile:null,
       page:1,
-      titles: allArticles,
+      titles: [],
       pageSize: 12,
       pageLimit: 0,
     }
   },
 
+
   beforeMount() {
     this.mobileNav = true;
    this.titles = this.titles.slice(this.page * this.pageSize, (this.page *this.pageSize) + this.pageSize);
-   this.pageLimit = Math.floor(allArticles.length / this.pageSize)
+   this.pageLimit = Math.floor(this.getArticles.length / this.pageSize)
 },
 
 created() {
   window.addEventListener("resize", this.checkScreenSize);
   this.checkScreenSize();
+  this.getArticles().then;
+  console.log(this.titles);
 },
 
   methods: {
 
     clickCallback (pageNum) {
-      this.titles = allArticles;
+      this.titles = this.getArticles;
       this.page = pageNum;
       this.titles = this.titles.slice(this.page * this.pageSize, (this.page *this.pageSize) + this.pageSize);
       console.log(pageNum);
     },
+
+
+    async getArticles() {
+      try {
+        const response = await fetch('http://localhost:1337/api/articles')
+        console.log(response)
+        this.titles = await response.json();
+        console.log(this.titles);
+      } catch (error) {
+        console.log("Couldn't get articles")
+      }
+  },
     
     toggleMenu() {
       this.mobileNav = !this.mobileNav;
